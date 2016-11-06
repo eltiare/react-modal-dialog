@@ -153,6 +153,8 @@ export default class ModalDialog extends React.Component {
         top, // eslint-disable-line no-unused-vars, this line is used to remove parameters from rest
         topOffset,
         width,
+        closeClassName,
+        closeDiameter,
         ...rest,
       },
     } = this;
@@ -167,6 +169,7 @@ export default class ModalDialog extends React.Component {
     };
 
     const divClassName = classNames(classes.dialog, className);
+    const closeHandlerClassName = classNames(classes.closeButton, closeClassName);
 
     return <div {...rest}
       ref="self"
@@ -175,8 +178,8 @@ export default class ModalDialog extends React.Component {
     >
       {
         onClose ?
-        <a className={classes.closeButton} onClick={onClose}>
-          <CloseCircle diameter={40}/>
+        <a className={ closeHandlerClassName } onClick={onClose}>
+          <CloseCircle diameter={ closeDiameter || 40 }/>
         </a> :
         null
       }
